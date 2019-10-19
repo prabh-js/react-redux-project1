@@ -5,17 +5,17 @@ class SearchBar extends React.Component {
         super(props);
         this.state = { term: '' };
     }
-    onInputChange = (event) => {
+    onInputChange = (term) => {
         this.setState({
-            term: event.target.value,
+            term: term,
         });
+        this.props.onSearchTermChange(term);
     }
     render() {
         return (
-            <React.Fragment>
-                <input onChange={(event)=>this.onInputChange(event)} value={this.state.term} />
-                <span>Value of input: {this.state.term}</span>
-            </React.Fragment>
+            <div className="col-md-12 search-bar">
+                <input onChange={(event)=>this.onInputChange(event.target.value)} value={this.state.term} />
+            </div>
         )
     } 
 }
